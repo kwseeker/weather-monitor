@@ -1,0 +1,7 @@
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+	//根工程 buildscript{} 中的配置会传递到所有子项目的build.gradle中
+	//implementation('org.springframework.boot:spring-boot-starter-thymeleaf:2.0.0.M4')
+	implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
+}

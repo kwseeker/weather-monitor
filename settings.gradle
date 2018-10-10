@@ -1,1 +1,12 @@
 rootProject.name = 'weather-monitor'
+
+//server-manage
+include 'server-manage'
+//weather-view
+include 'weather-view:msa-weather-status-server'
+include 'weather-view:msa-weather-city-server'
+//weather-service
+include 'weather-service:msa-weather-collection-server'
+include 'weather-service:msa-weather-report-server'
+//weather-model
+include 'weather-model'

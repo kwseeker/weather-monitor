@@ -14,24 +14,39 @@ buildscript {
 	}
 }
 
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
+//应用于所有模块的配置
+allprojects {
+	repositories {
+		//mavenCentral()
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
+		maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+	}
 
-group = 'top.kwseeker'
-version = '1.0.0'
-sourceCompatibility = 1.8
-
-repositories {
-//	mavenCentral()
-	maven { url "https://repo.spring.io/snapshot" }
-	maven { url "https://repo.spring.io/milestone" }
-	maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+	group = 'top.kwseeker'
 }
 
+//应用于所有子模块的配置
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'idea'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
 
-dependencies {
-	implementation('org.springframework.boot:spring-boot-starter-web')
-	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	sourceCompatibility = 1.8
+
+	dependencies {
+		//implementation()不会传递依赖，compile()会传递依赖
+		implementation('org.springframework.boot:spring-boot-starter-web')
+		testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+		// HttpClient
+		implementation('org.apache.httpcomponents:httpclient:4.5.3')
+		// Redis
+		implementation('org.springframework.boot:spring-boot-starter-data-redis')
+		// Quartz
+		implementation('org.springframework.boot:spring-boot-starter-quartz')
+
+//		implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
+	}
 }
