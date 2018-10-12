@@ -1,0 +1,27 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka-registry-center
+
+eureka:
+  instance:
+    # 也可设置为本机的IP
+    hostname: localhost
+  # 作为eureka client的配置
+  client:
+    # 这里是问要不要用eureka,将此服务注册到注册中心， 这个服务就是做注册中心的，不提供其他服务
+    # 本身并不需要注册到eureka注册中心中，被其他服务发现也没有意义，因为不提供远程调用服务
+    register-with-eureka: false
+    # 是否获取Eureka server上注册表信息
+    fetch-registry: false
+    # 可用注册中心的地址列表，可配置多个用逗号分隔
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  # 作为eureka server的配置
+#  server:
+#    enable-self-preservation: false
+
+#  dashboard:
+#    path: /eureka

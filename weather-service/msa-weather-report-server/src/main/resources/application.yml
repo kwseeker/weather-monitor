@@ -1,0 +1,12 @@
+server:
+  port: 8093
+
+spring:
+  application:
+    name: msa-weather-report-server
+  thymeleaf:
+    cache: false    # 热部署静态文件
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

@@ -1,7 +1,7 @@
 rootProject.name = 'weather-monitor'
 
 //server-manage
-include 'server-manage'
+include 'server-manage:eureka-server'
 //weather-view
 include 'weather-view:msa-weather-status-server'
 include 'weather-view:msa-weather-city-server'
