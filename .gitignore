@@ -4,6 +4,7 @@
 
 */*/out/
 *.rdb
+*/*/build
 
 ### STS ###
 .apt_generated

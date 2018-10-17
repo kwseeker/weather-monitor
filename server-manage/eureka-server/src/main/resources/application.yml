@@ -13,15 +13,31 @@ eureka:
   client:
     # 这里是问要不要用eureka,将此服务注册到注册中心， 这个服务就是做注册中心的，不提供其他服务
     # 本身并不需要注册到eureka注册中心中，被其他服务发现也没有意义，因为不提供远程调用服务
-    register-with-eureka: false
+    register-with-eureka: true
     # 是否获取Eureka server上注册表信息
     fetch-registry: false
     # 可用注册中心的地址列表，可配置多个用逗号分隔
-    service-url:
-      defaultZone: http://localhost:8761/eureka
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
+
   # 作为eureka server的配置
-#  server:
-#    enable-self-preservation: false
+  server:
+    enable-self-preservation: false
 
 #  dashboard:
 #    path: /eureka
+
+# TODO: 注册中心相互注册，实现高可用。（多个注册中心怎么设置？通过命令行设置Eureka参数，现在遇到的问题是，相互注册失败）
+# 比如使用一份代码，启动三个Eureka服务段实现高可用:需要指定服务IP或者域名以及端口号,然后将自己注册到其他Eureka服务器中
+# 命令行中的操作是：
+# java -jar xxx.jar --eurake.instance.hostname=peer1 --server.port=8761
+#   --euraka.client.service-url.defaultZone=http://peer2:8762/eureka/,http://peer3:8763/eureka/
+#eurake.instance.hostname=peer1
+#server.port=8761
+#euraka.client.service-url.defaultZone=http://peer2:8761/eureka/,http://peer3:8761/eureka/
+#eurake.instance.hostname=peer2
+#server.port=8761
+#euraka.client.service-url.defaultZone=http://peer1:8761/eureka/,http://peer3:8761/eureka/
+#eurake.instance.hostname=peer3
+#server.port=8761
+#euraka.client.service-url.defaultZone=http://peer1:8761/eureka/,http://peer2:8761/eureka/

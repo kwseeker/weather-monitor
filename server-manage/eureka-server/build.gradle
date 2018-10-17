@@ -1,9 +1,5 @@
 version = '0.0.1-SNAPSHOT'
 
-ext {
-//    springCloudVersion = 'Finchley.M2'
-}
-
 // 依赖关系
 dependencies {
     // Eureka Server
